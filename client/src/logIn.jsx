@@ -66,7 +66,7 @@ class LogIn extends Component {
           <Box
             width="medium"
             pad="medium">
-            <Form
+            <Form class='login'
 
               onReset={event => console.log(event)}
               onSubmit={({ value }) => {
