@@ -1,4 +1,4 @@
-# Hosital-Management-System-DBMS
+# Health-Connect
 
 <b>Link</b> : https://github.com/naveej/Health-Connect
 
