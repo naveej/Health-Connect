@@ -96,6 +96,6 @@ Database : MySQL
 
     1. Run "npm install" in frontend and backend directories.
 
-    2. Run "npm start" first in the backend and then in the frontend directory.
+    2. Run "npm start" first in the backend and then "npm run dev "in the client directory.
 
     3. Access localhost:3000 from the browser.
