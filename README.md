@@ -1,6 +1,6 @@
 # Hosital-Management-System-DBMS
 
-<b>Link</b> : https://github.com/hrishikeshathalye/Hospital-Management-System-DBMS
+<b>Link</b> : https://github.com/naveej/Health-Connect
 
 <pre>
 Name:  V Jeevan kumar
