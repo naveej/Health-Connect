@@ -24,7 +24,8 @@
     "react-dom": "^18.2.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "vite-plugin-rewrite-all": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
