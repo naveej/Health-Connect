@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
   Box,
@@ -55,13 +55,13 @@ class LogIn extends Component {
     return (
       <Grommet theme={theme} full>
         <AppBar>
-        <a style={{ color: 'inherit', textDecoration: 'inherit'}} href="/"><Heading level='3' margin='none'>HC</Heading></a>
+          <a style={{ color: 'inherit', textDecoration: 'inherit' }} href="/"><Heading level='3' margin='none'>HC</Heading></a>
         </AppBar>
 
         <Box
           fill
           align="center"
-          justify="top"
+          justify="start"
           pad="medium">
           <Box
             width="medium"
@@ -103,14 +103,14 @@ class LogIn extends Component {
                 label="Email"
                 name="email"
                 type="email"
-                placeholder = "Please enter your email."
+                placeholder="Please enter your email."
                 required />
               <FormField
                 color="#00739D"
                 type='password'
                 label="Password"
                 name="password"
-                placeholder = "Please enter your password."
+                placeholder="Please enter your password."
                 required />
               <FormField
                 component={CheckBox}
@@ -123,10 +123,10 @@ class LogIn extends Component {
                 }}
               />
               <Box direction="column" align="center" >
-                <Button style={{ textAlign: 'center' , margin:'1rem'}}
-                 type="submit" label="Log In" fill="horizontal" primary />
+                <Button style={{ textAlign: 'center', margin: '1rem' }}
+                  type="submit" label="Log In" fill="horizontal" primary />
                 <Button label="Create Account"
-                  style={{ textAlign: 'center' , margin:'0.5rem'}}
+                  style={{ textAlign: 'center', margin: '0.5rem' }}
                   fill="horizontal"
                   href="/createAcc" />
               </Box>

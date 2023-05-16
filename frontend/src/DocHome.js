@@ -86,9 +86,9 @@ export class DocHome extends Component {
                 direction='row'
                 align='center'
                 flex={false}
-                style={{borderBottom:"1px solid grey"}}
+                style={{ borderBottom: "1px solid grey" }}
             >
-                <a style={{ color: 'inherit', textDecoration: 'inherit'}} href="/"><Heading level='3' margin='none'>HC</Heading></a>
+                <a style={{ color: 'inherit', textDecoration: 'inherit' }} href="/"><Heading level='3' margin='none'>HC</Heading></a>
 
             </Box>
         );
@@ -97,7 +97,7 @@ export class DocHome extends Component {
             <Grommet full={true}
                 theme={theme}>
                 <Box align="left">
-                    <Header/>
+                    <Header />
                     <Grid
                         fill
                         rows={['auto', 'flex']}
@@ -107,18 +107,18 @@ export class DocHome extends Component {
                             { name: 'main', start: [1, 1], end: [1, 1] },
                         ]}>
                         <Box
-                        gridArea="sidebar"
-                        width="small"
-                        animation={[
-                        { type: 'fadeIn', duration: 300 },
-                        { type: 'slideRight', size: 'xlarge', duration: 150 },
-                        ]}
+                            gridArea="sidebar"
+                            width="small"
+                            animation={[
+                                { type: 'fadeIn', duration: 300 },
+                                { type: 'slideRight', size: 'xlarge', duration: 150 },
+                            ]}
                         >
                             <SidebarButtons />
                         </Box>
                         <Box
                             gridArea="main"
-                            justify="top"
+                            justify="start"
                             align="center">
                             <Box align="center" pad="large">
                                 <Heading

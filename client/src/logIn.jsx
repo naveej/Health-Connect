@@ -63,19 +63,19 @@ class LogIn extends Component {
           </a>
         </AppBar>
 
-        <Box fill align="center" justify="top" pad="medium">
+        <Box fill align="center" justify="start" pad="medium">
           <Box width="medium" pad="medium">
             <Form
-              class="login"
+              className="login"
               onReset={(event) => console.log(event)}
               onSubmit={({ value }) => {
                 console.log("Submit", value);
                 if (value.isDoc === true) {
                   fetch(
                     "http://localhost:3001/checkDoclogin?email=" +
-                      value.email +
-                      "&password=" +
-                      value.password
+                    value.email +
+                    "&password=" +
+                    value.password
                   )
                     .then((res) => res.json())
                     .then((res) => {
@@ -89,9 +89,9 @@ class LogIn extends Component {
                 } else {
                   fetch(
                     "http://localhost:3001/checklogin?email=" +
-                      value.email +
-                      "&password=" +
-                      value.password
+                    value.email +
+                    "&password=" +
+                    value.password
                   )
                     .then((res) => res.json())
                     .then((res) => {

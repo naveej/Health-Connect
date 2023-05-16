@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
 import {
     Box,
@@ -33,9 +33,9 @@ export class ShowDiagnoses extends Component {
     }
     state = { diagnoses: [] }
     componentDidMount() {
-        fetch('http://localhost:3001/showDiagnoses?id='+ id)
-        .then(res => res.json())
-        .then(res => this.setState({ diagnoses: res.data }));
+        fetch('http://localhost:3001/showDiagnoses?id=' + id)
+            .then(res => res.json())
+            .then(res => this.setState({ diagnoses: res.data }));
     }
     render() {
         const { diagnoses } = this.state;
@@ -50,14 +50,14 @@ export class ShowDiagnoses extends Component {
                 align='center'
                 flex={false}
             >
-                <a style={{ color: 'inherit', textDecoration: 'inherit'}} href="/"><Heading level='3' margin='none'>HC</Heading></a>
+                <a style={{ color: 'inherit', textDecoration: 'inherit' }} href="/"><Heading level='3' margin='none'>HC</Heading></a>
             </Box>
         );
         const Body = () => (
             <div className="container">
                 <div className="panel panel-default p50 uth-panel">
-                    {diagnoses.map(diagnosis =>
-                        <Table>
+                    {diagnoses.map((diagnosis, index) =>
+                        <Table key={index}>
                             <TableBody>
                                 <TableRow>
                                     <TableCell scope="row">
@@ -66,7 +66,6 @@ export class ShowDiagnoses extends Component {
                                     <TableCell>{diagnosis.appt}</TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
-                                <br />
                                 <TableRow>
                                     <TableCell scope="row">
                                         <strong>Doctor</strong>
@@ -74,7 +73,6 @@ export class ShowDiagnoses extends Component {
                                     <TableCell>{diagnosis.doctor}</TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
-                                <br />
                                 <TableRow>
                                     <TableCell scope="row">
                                         <strong>Diagnosis</strong>
@@ -82,7 +80,6 @@ export class ShowDiagnoses extends Component {
                                     <TableCell>{diagnosis.diagnosis}</TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
-                                <br />
                                 <TableRow>
                                     <TableCell scope="row">
                                         <strong>Prescription</strong>
