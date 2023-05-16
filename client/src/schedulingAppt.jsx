@@ -195,12 +195,12 @@ const ConcernsTextArea = () => {
         width="medium"
         height="xsmall"
       >
-      <TextArea
-        placeholder="Enter your concerns..."
-        value={value}
-        onChange={onChange}
-        fill
-        required />
+        <TextArea
+          placeholder="Enter your concerns..."
+          value={value}
+          onChange={onChange}
+          fill="true"
+          required />
       </Box>
     </Grommet>
   );
@@ -223,7 +223,7 @@ const SymptomsTextArea = () => {
         <TextArea
           placeholder="Enter your symptoms..."
           value={value}
-          onChange={onChange} fill
+          onChange={onChange} fill="true"
           required />
       </Box>
     </Grommet>
@@ -233,17 +233,17 @@ const SymptomsTextArea = () => {
 function DoctorsDropdown() {
   const [value, setValue] = useState();
   const [doctorsList, setList] = useState([]);
-  useEffect(() => {    
+  useEffect(() => {
     fetch("http://localhost:3001/docInfo")
-    .then(res => res.json())
-    .then(res => {
-      let arr = []
-      res.data.forEach(i => {
-        let tmp = `${i.name} (${i.email})`;
-        arr.push(tmp);
+      .then(res => res.json())
+      .then(res => {
+        let arr = []
+        res.data.forEach(i => {
+          let tmp = `${i.name} (${i.email})`;
+          arr.push(tmp);
+        });
+        setList(arr);
       });
-      setList(arr);
-    });
   }, []);
   const onChange = event => {
     setValue(event.value);
@@ -255,7 +255,7 @@ function DoctorsDropdown() {
       options={doctorsList}
       value={value}
       placeholder="Select Doctor"
-      onChange={onChange} fill
+      onChange={onChange} fill="true"
       required
     />
   );
@@ -268,7 +268,7 @@ export class SchedulingAppt extends Component {
     return (
       <Grommet theme={theme} full>
         <AppBar>
-        <a style={{ color: 'inherit', textDecoration: 'inherit'}} href="/"><Heading level='3' margin='none'>HC</Heading></a>
+          <a style={{ color: 'inherit', textDecoration: 'inherit' }} href="/"><Heading level='3' margin='none'>HC</Heading></a>
         </AppBar>
         <Box align="center" pad="small" gap="small">
           <Form
@@ -294,13 +294,13 @@ export class SchedulingAppt extends Component {
                             let gen_uid = uid_json.id;
                             console.log(gen_uid);
                             fetch("http://localhost:3001/schedule?time=" + theTime + "&endTime=" + endTime +
-                              "&date=" + theDate + "&concerns=" + theConcerns + "&symptoms=" + theSymptoms + 
-                              "&id=" + gen_uid + "&doc=" + theDoc).then((x)=>{
-                              fetch("http://localhost:3001/addToPatientSeeAppt?email=" + email_in_use + "&id=" + gen_uid +
-                                "&concerns=" + theConcerns + "&symptoms=" + theSymptoms).then((x)=>{
-                                  window.alert("Appointment successfully scheduled!");
-                                });
-                            })
+                              "&date=" + theDate + "&concerns=" + theConcerns + "&symptoms=" + theSymptoms +
+                              "&id=" + gen_uid + "&doc=" + theDoc).then((x) => {
+                                fetch("http://localhost:3001/addToPatientSeeAppt?email=" + email_in_use + "&id=" + gen_uid +
+                                  "&concerns=" + theConcerns + "&symptoms=" + theSymptoms).then((x) => {
+                                    window.alert("Appointment successfully scheduled!");
+                                  });
+                              })
                           });
                       }
                     });
