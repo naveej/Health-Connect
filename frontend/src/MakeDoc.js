@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
 import {
     Box,
@@ -45,11 +45,11 @@ export class MakeDoc extends Component {
         return (
             <Grommet theme={theme} full>
                 <AppBar>
-                <a style={{ color: 'inherit', textDecoration: 'inherit'}} href="/"><Heading level='3' margin='none'>HC</Heading></a>
+                    <a style={{ color: 'inherit', textDecoration: 'inherit' }} href="/"><Heading level='3' margin='none'>HC</Heading></a>
                 </AppBar>
-                <Box fill align="center" justify="top">
+                <Box fill align="center" justify="start">
                     <Box width="medium">
-                    <Text color = "#AAAAAA">Doctor's registration form:</Text>
+                        <Text color="#AAAAAA">Doctor's registration form:</Text>
                         <Form
                             onReset={event => console.log(event)}
                             method="post"

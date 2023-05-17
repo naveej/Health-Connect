@@ -95,9 +95,9 @@ export class Home extends Component {
         direction='row'
         align='center'
         flex={false}
-        style={{borderBottom:"1px solid grey"}}
+        style={{ borderBottom: "1px solid grey" }}
       >
-        <a style={{ color: 'inherit', textDecoration: 'inherit'}} href="/"><Heading level='3' margin='none'>HC</Heading></a>
+        <a style={{ color: 'inherit', textDecoration: 'inherit' }} href="/"><Heading level='3' margin='none'>HC</Heading></a>
       </Box>
     );
 
@@ -105,7 +105,7 @@ export class Home extends Component {
       <Grommet full={true}
         theme={theme} >
         <Box fill={true}>
-          <Header/>
+          <Header />
           <Grid
             fill
             rows={['auto', 'flex']}
@@ -126,10 +126,10 @@ export class Home extends Component {
             </Box>
             <Box
               gridArea="main"
-              justify="top"
+              justify="start"
               align="center">
               <Box align="center" pad="large">
-                <Heading 
+                <Heading
                   color="#000000">Welcome Patient
                 </Heading>
               </Box>

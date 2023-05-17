@@ -26,6 +26,7 @@ export default function App() {
     fetch("http://localhost:3001/userInSession")
       .then(res => res.json())
       .then(res => {
+        console.log(res)
         let string_json = JSON.stringify(res);
         let email_json = JSON.parse(string_json);
         let email = email_json.email;

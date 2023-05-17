@@ -97,6 +97,7 @@ app.get("/makeAccount", (req, res) => {
   con.query(sql_statement, function (error, results, fields) {
     if (error) throw error;
     else {
+      console.log("TEST", results)
       let generated_id = results[0].id + 1;
       let sql_statement =
         `INSERT INTO MedicalHistory (id, date, conditions, surgeries, medication) 
@@ -297,7 +298,7 @@ app.get("/checkIfApptExists", (req, res) => {
   let startTime = params.startTime;
   let date = params.date;
   let ndate = new Date(date).toLocaleDateString().substring(0, 10);
-  let sql_date = `STR_TO_DATE('${ndate}', '%d/%m/%Y')`;
+  let sql_date = `STR_TO_DATE('${ndate}', '%m/%d/%Y')`;
   //sql to turn string to sql time obj
   let sql_start = `CONVERT('${startTime}', TIME)`;
   let statement = `SELECT * FROM PatientsAttendAppointments, Appointment  
@@ -328,13 +329,20 @@ app.get("/checkIfApptExists", (req, res) => {
           con.query(statement, function (error, results, fields) {
             if (error) throw error;
             else {
-              if (results.length) {
-                results = [];
-              } else {
-                results = [1];
+              // if (results.length) {
+              //   results = [];
+              // } else {
+              //   results = [1];
+              // }
+              // return res.json({
+              //   data: cond1.concat(cond2, results),
+              // });
+
+              if (results.length <= 0) {
+                cond3 = null;
               }
               return res.json({
-                data: cond1.concat(cond2, results),
+                data: cond1.concat(cond2, cond3),
               });
             }
           });
@@ -478,6 +486,7 @@ app.get("/addToPatientSeeAppt", (req, res) => {
   let sql_try = `INSERT INTO PatientsAttendAppointments (patient, appt, concerns, symptoms) 
                  VALUES ("${email}", ${appt_id}, "${concerns}", "${symptoms}")`;
   console.log(sql_try);
+  console.log(sql_try);
   con.query(sql_try, function (error, results, fields) {
     if (error) throw error;
     else {
@@ -499,7 +508,7 @@ app.get("/schedule", (req, res) => {
   let symptoms = params.symptoms;
   let doctor = params.doc;
   let ndate = new Date(date).toLocaleDateString().substring(0, 10);
-  let sql_date = `STR_TO_DATE('${ndate}', '%d/%m/%Y')`;
+  let sql_date = `STR_TO_DATE('${ndate}', '%m/%d/%Y')`;
   //sql to turn string to sql time obj
   let sql_start = `CONVERT('${time}', TIME)`;
   //sql to turn string to sql time obj
@@ -510,6 +519,7 @@ app.get("/schedule", (req, res) => {
   con.query(sql_try, function (error, results, fields) {
     if (error) throw error;
     else {
+      console.log("IDD ", id, results);
       let sql_try = `INSERT INTO Diagnose (appt, doctor, diagnosis, prescription) 
                  VALUES (${id}, "${doctor}", "Not Yet Diagnosed" , "Not Yet Diagnosed")`;
       console.log(sql_try);
@@ -527,14 +537,19 @@ app.get("/schedule", (req, res) => {
 
 //Generates ID for appointment
 app.get("/genApptUID", (req, res) => {
-  let statement = "SELECT id FROM Appointment ORDER BY id DESC LIMIT 1;";
-  con.query(statement, function (error, results, fields) {
-    if (error) throw error;
-    else {
-      let generated_id = results[0].id + 1;
-      return res.json({ id: `${generated_id}` });
-    }
-  });
+  // WTH is this bro???
+  // let statement = "SELECT id FROM Appointment ORDER BY id DESC LIMIT 1;";
+  // con.query(statement, function (error, results, fields) {
+  //   if (error) throw error;
+  //   else {
+  //     let generated_id = results[0]?.id + 1;
+  //     return res.json({ id: `${generated_id}` });
+  //   }
+  // });
+  // WTH is this bro???
+
+  let randID = Math.round(Math.random() * 9999999999);
+  res.json({ id: randID })
 });
 
 //To fill diagnoses

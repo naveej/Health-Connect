@@ -56,6 +56,7 @@ const DropContent = ({ date: initialDate, time: initialTime, onClose }) => {
     theTime = time;
 
     //time is string, store it as [hour, min]
+    console.log("theTime", theTime)
     let parsedTime = theTime.split(":");
 
     //parse hr string to in and add one hour to start hour
@@ -65,9 +66,9 @@ const DropContent = ({ date: initialDate, time: initialTime, onClose }) => {
     //rejoin into string
     endTime = `${endHour}:00`;
 
-    console.log(endTime);
     console.log(theDate)
     console.log(theTime);
+    console.log(endTime);
     onClose(date || initialDate, time || initialTime);
   };
 
@@ -199,7 +200,7 @@ const ConcernsTextArea = () => {
           placeholder="Enter your concerns..."
           value={value}
           onChange={onChange}
-          fill="true"
+          fill={true}
           required />
       </Box>
     </Grommet>
@@ -223,7 +224,7 @@ const SymptomsTextArea = () => {
         <TextArea
           placeholder="Enter your symptoms..."
           value={value}
-          onChange={onChange} fill="true"
+          onChange={onChange} fill={true}
           required />
       </Box>
     </Grommet>
@@ -283,7 +284,8 @@ export class SchedulingAppt extends Component {
                   fetch("http://localhost:3001/checkIfApptExists?email=" + email_in_use + "&startTime=" + theTime + "&date=" + theDate + "&docEmail=" + theDoc)
                     .then(res => res.json())
                     .then(res => {
-                      if ((res.data[0])) {
+                      // console.log("APT", res.data)
+                      if ((res.data[0] !== null)) {
                         window.alert("Appointment Clash! Try another doctor or date/time");
                       } else {
                         fetch("http://localhost:3001/genApptUID")
@@ -292,10 +294,11 @@ export class SchedulingAppt extends Component {
                             var string_json = JSON.stringify(res);
                             var uid_json = JSON.parse(string_json);
                             let gen_uid = uid_json.id;
-                            console.log(gen_uid);
+                            // console.log("gen_uid", gen_uid);
                             fetch("http://localhost:3001/schedule?time=" + theTime + "&endTime=" + endTime +
                               "&date=" + theDate + "&concerns=" + theConcerns + "&symptoms=" + theSymptoms +
                               "&id=" + gen_uid + "&doc=" + theDoc).then((x) => {
+                                console.log("email_in_use", email_in_use, x)
                                 fetch("http://localhost:3001/addToPatientSeeAppt?email=" + email_in_use + "&id=" + gen_uid +
                                   "&concerns=" + theConcerns + "&symptoms=" + theSymptoms).then((x) => {
                                     window.alert("Appointment successfully scheduled!");

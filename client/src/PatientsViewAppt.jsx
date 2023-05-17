@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
 import {
     Box,
@@ -62,7 +62,7 @@ export class PatientsViewAppointments extends Component {
                     <table className="table table-hover">
                         <thead>
                             <tr>
-                            <th>Date of Appointment</th>
+                                <th>Date of Appointment</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
                                 <th>Concerns</th>
@@ -71,8 +71,8 @@ export class PatientsViewAppointments extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {appointmentsState.map(patient =>
-                                <tr key={patient.user}>
+                            {appointmentsState.map((patient, index) =>
+                                <tr key={index}>
                                     <td align="center" >
                                         {new Date(patient.theDate).toLocaleDateString().substring(0, 10)}
                                     </td>
@@ -83,25 +83,25 @@ export class PatientsViewAppointments extends Component {
                                     <td align="center">{patient.status}</td>
                                     <td>
                                         <Button label="See Diagnosis"
-                                        href={`/showDiagnoses/${patient.ID}`}
-                                        ></Button>     
-                                    </td> 
+                                            href={`/showDiagnoses/${patient.ID}`}
+                                        ></Button>
+                                    </td>
                                     <td>
-                                    {   patient.status==="NotDone"?
-                                        <Button label="Cancel"
-                                        onClick = {() => {
-                                            fetch('http://localhost:3001/deleteAppt?uid='+ patient.ID)
-                                            window.location.reload()
-                                        }}
-                                        ></Button>
-                                        :
-                                        <Button label="Delete"
-                                        onClick = {() => {
-                                            fetch('http://localhost:3001/deleteAppt?uid='+ patient.ID)
-                                            window.location.reload()
-                                        }}
-                                        ></Button>
-                                    }
+                                        {patient.status === "NotDone" ?
+                                            <Button label="Cancel"
+                                                onClick={() => {
+                                                    fetch('http://localhost:3001/deleteAppt?uid=' + patient.ID)
+                                                    window.location.reload()
+                                                }}
+                                            ></Button>
+                                            :
+                                            <Button label="Delete"
+                                                onClick={() => {
+                                                    fetch('http://localhost:3001/deleteAppt?uid=' + patient.ID)
+                                                    window.location.reload()
+                                                }}
+                                            ></Button>
+                                        }
                                     </td>
                                 </tr>
                             )}
@@ -114,7 +114,7 @@ export class PatientsViewAppointments extends Component {
             <Grommet theme={theme} full>
                 <Box >
                     <AppBar>
-                    <a style={{ color: 'inherit', textDecoration: 'inherit'}} href="/"><Heading level='3' margin='none'>HC</Heading></a>
+                        <a style={{ color: 'inherit', textDecoration: 'inherit' }} href="/"><Heading level='3' margin='none'>HC</Heading></a>
                     </AppBar>
                     <Body />
                 </Box>
