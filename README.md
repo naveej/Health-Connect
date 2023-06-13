@@ -22,7 +22,7 @@ Database : MySQL
 ![alt text](https://github.com/hrishikeshathalye/Hosital-Management-System-DBMS/blob/master/Schemas%26ER/myer.png)
 
 <b>Relational Schemas :</b>
-
+![alt text](https://github.com/hrishikeshathalye/Hosital-Management-System-DBMS/blob/master/Schemas%26ER/schema.png)
 
 <b>Patient Side Features :</b>
 
@@ -57,7 +57,7 @@ Database : MySQL
 <b>Screenshots :</b>
 
 1. Patient registering on the system:
-   
+   ![alt text](https://github.com/hrishikeshathalye/Hosital-Management-System-DBMS/blob/master/Screenshots/PatientRegistration.png)
 
 2. Doctor registering on the system:
    ![alt text](https://github.com/hrishikeshathalye/Hosital-Management-System-DBMS/blob/master/Screenshots/DoctorRegistration.png)
